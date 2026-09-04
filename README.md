@@ -101,7 +101,7 @@ Environment variables supported:
 | Variable | Description | Default |
 | :--- | :--- | :--- |
 | `ZELLA_QA_URL` | Base QA URL | `https://zellablinds.com/` |
-| `ZELLA_PASSWORD` | Password for protected areas | `NewHartford20@%` |
+| `ZELLA_PASSWORD` | Password for protected areas | `your_secure_password_here` |
 | `BROWSER` | Browser to run (`chromium`, `firefox`, `webkit`, `all`) | `chromium` |
 | `HEADLESS` | Run in headless mode (`true` / `false`) | `true` |
 | `DEFAULT_TIMEOUT` | Test timeout in milliseconds | `30000` |

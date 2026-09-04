@@ -24,7 +24,7 @@ export interface EnvironmentConfig {
 
 export const config: EnvironmentConfig = {
   baseUrl: process.env.ZELLA_QA_URL || 'https://zellablinds.com/',
-  password: process.env.ZELLA_PASSWORD || 'NewHartford20@%',
+  password: process.env.ZELLA_PASSWORD || '',
   browserName: (process.env.BROWSER as SupportedBrowser) || 'chromium',
   headless: process.env.HEADLESS !== 'false',
   timeout: Number(process.env.DEFAULT_TIMEOUT) || 30000,

@@ -32,7 +32,7 @@ jobs:
         id: run_tests
         env:
           ZELLA_QA_URL: ${{ secrets.ZELLA_QA_URL || 'https://zellablinds.com/' }}
-          ZELLA_PASSWORD: ${{ secrets.ZELLA_PASSWORD || 'NewHartford20@%' }}
+          ZELLA_PASSWORD: ${{ secrets.ZELLA_PASSWORD }}
           CI: true
         run: npm run test:smoke
 

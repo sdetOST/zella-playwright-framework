@@ -55,14 +55,10 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-      - name: Check SMTP Configuration Notice
-        if: always() && (secrets.SMTP_USERNAME == '' || secrets.SMTP_PASSWORD == '')
-        run: |
-          echo "::warning ::SMTP_USERNAME or SMTP_PASSWORD repository secret is not set. Email report to zellablinds@gmail.com was skipped. Add SMTP_USERNAME and SMTP_PASSWORD under GitHub Settings -> Secrets and variables -> Actions."
-
       - name: Send Test Report Email to zellablinds@gmail.com
         uses: dawidd6/action-send-mail@v4
-        if: always() && secrets.SMTP_USERNAME != '' && secrets.SMTP_PASSWORD != ''
+        if: always()
+        continue-on-error: true
         with:
           server_address: smtp.gmail.com
           server_port: 465

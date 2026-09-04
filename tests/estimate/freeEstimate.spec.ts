@@ -7,16 +7,16 @@ test.describe('Free Estimate - Estimation Request Form (TDD)', () => {
     await estimatePage.open();
   });
 
-  test('TC-ESTIMATE-001: should display Free Estimate form with all interactive elements', async ({
-    estimatePage,
-  }) => {
+  test('TC-ESTIMATE-001: should display Free Estimate form with all interactive elements', {
+    tag: '@smoke',
+  }, async ({ estimatePage }) => {
     // ASSERT: Verify form readiness
     await estimatePage.assertFormIsReady();
   });
 
-  test('TC-ESTIMATE-002: should populate estimate request fields accurately', async ({
-    estimatePage,
-  }) => {
+  test('TC-ESTIMATE-002: should populate estimate request fields accurately', {
+    tag: '@smoke',
+  }, async ({ estimatePage }) => {
     // ARRANGE
     const estimateData = TEST_DATA.freeEstimateForm.validEstimate;
 

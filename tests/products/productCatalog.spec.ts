@@ -1,10 +1,9 @@
 import { test, expect } from '../../src/fixtures/testFixture';
 
 test.describe('Product Catalog - Window Treatments (TDD)', () => {
-  test('TC-PROD-001: should navigate to main Blinds & Shades catalog page', async ({
-    productsPage,
-    page,
-  }) => {
+  test('TC-PROD-001: should navigate to main Blinds & Shades catalog page', {
+    tag: '@smoke',
+  }, async ({ productsPage }) => {
     // ACT
     await productsPage.openBlindsAndShades();
 
@@ -13,10 +12,9 @@ test.describe('Product Catalog - Window Treatments (TDD)', () => {
     await productsPage.assertCatalogLoaded();
   });
 
-  test('TC-PROD-002: should load Zebra Blinds product category', async ({
-    productsPage,
-    page,
-  }) => {
+  test('TC-PROD-002: should load Zebra Blinds product category', {
+    tag: '@smoke',
+  }, async ({ productsPage, page }) => {
     // ACT
     await productsPage.openZebra();
 
@@ -25,10 +23,9 @@ test.describe('Product Catalog - Window Treatments (TDD)', () => {
     await expect(page).toHaveTitle(/Zella Blinds/i);
   });
 
-  test('TC-PROD-003: should load Roller Blinds product category', async ({
-    productsPage,
-    page,
-  }) => {
+  test('TC-PROD-003: should load Roller Blinds product category', {
+    tag: '@smoke',
+  }, async ({ productsPage, page }) => {
     // ACT
     await productsPage.openRoller();
 
@@ -37,10 +34,9 @@ test.describe('Product Catalog - Window Treatments (TDD)', () => {
     await expect(page).toHaveTitle(/Zella Blinds/i);
   });
 
-  test('TC-PROD-004: should load Custom-Print Blinds product category', async ({
-    productsPage,
-    page,
-  }) => {
+  test('TC-PROD-004: should load Custom-Print Blinds product category', {
+    tag: '@smoke',
+  }, async ({ productsPage, page }) => {
     // ACT
     await productsPage.openCustomPrint();
 

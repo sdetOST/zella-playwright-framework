@@ -7,9 +7,9 @@ test.describe('Contact Us - Form Interactions & Validations (TDD)', () => {
     await contactPage.open();
   });
 
-  test('TC-CONTACT-001: should load Contact page with heading, form fields, and operational info', async ({
-    contactPage,
-  }) => {
+  test('TC-CONTACT-001: should load Contact page with heading, form fields, and operational info', {
+    tag: '@smoke',
+  }, async ({ contactPage }) => {
     // ASSERT: Verify primary elements
     await expect(contactPage.heading).toBeVisible();
     await expect(contactPage.firstNameInput).toBeVisible();
@@ -23,9 +23,9 @@ test.describe('Contact Us - Form Interactions & Validations (TDD)', () => {
     await expect(contactPage.newYorkPhone).toBeVisible();
   });
 
-  test('TC-CONTACT-002: should populate contact form fields with valid customer inquiry data', async ({
-    contactPage,
-  }) => {
+  test('TC-CONTACT-002: should populate contact form fields with valid customer inquiry data', {
+    tag: '@smoke',
+  }, async ({ contactPage }) => {
     // ARRANGE
     const uniqueEmail = TestHelpers.generateRandomEmail('zella_qa');
     const formData = {
@@ -47,9 +47,9 @@ test.describe('Contact Us - Form Interactions & Validations (TDD)', () => {
     await expect(contactPage.messageTextarea).toHaveValue(formData.message);
   });
 
-  test('TC-CONTACT-003: should display validation errors when required fields are submitted empty', async ({
-    contactPage,
-  }) => {
+  test('TC-CONTACT-003: should display validation errors when required fields are submitted empty', {
+    tag: '@smoke',
+  }, async ({ contactPage }) => {
     // ACT: Submit blank form
     await contactPage.submit();
 

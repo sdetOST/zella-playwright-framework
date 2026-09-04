@@ -127,6 +127,11 @@ npm run test:webkit
 ```bash
 npm run test:headed
 ```
+### Run Smoke Test Suite
+```bash
+# Execute all @smoke tagged tests
+npm run test:smoke
+```
 
 ### Run Specific Test Suites
 ```bash
@@ -165,8 +170,8 @@ Tests in this framework are formulated using the **Arrange, Act, Assert (AAA)** 
 ```typescript
 import { test, expect } from '../../src/fixtures/testFixture';
 
-test.describe('Feature Acceptance Specification', () => {
-  test('should satisfy acceptance criteria', async ({ contactPage, headerNav }) => {
+test.describe('Feature Acceptance Specification', { tag: '@smoke' }, () => {
+  test('should satisfy acceptance criteria', { tag: '@smoke' }, async ({ contactPage, headerNav }) => {
     // 1. ARRANGE
     await contactPage.open();
 
@@ -190,4 +195,16 @@ test.describe('Feature Acceptance Specification', () => {
 
 ## 🛠️ CI/CD Integration
 
-The framework includes a GitHub Actions configuration in `.github/workflows/playwright.yml`. It runs automatically on pushes and pull requests to `main`/`master`, installs required dependencies, runs tests across browsers, and publishes artifacts retaining the HTML report for 30 days.
+### 1. Push & Pull Request CI (`.github/workflows/playwright.yml`)
+Runs automatically on every push or pull request to `main`/`master`, runs the full test matrix, and uploads the HTML test report artifact (retained for 30 days).
+
+### 2. Daily 6 AM Smoke Test & Email Report (`.github/workflows/daily-smoke-test.yml`)
+Runs every morning at **6:00 AM EDT** (`0 10 * * *` UTC) and can also be triggered manually via `workflow_dispatch`.
+- Automatically executes all `@smoke` tagged test cases.
+- Compresses the Playwright HTML test report into `playwright-report.zip`.
+- Sends an automated email containing the run status, commit info, and attached zip report to **`zellablinds@gmail.com`**.
+
+#### Email Setup (GitHub Secrets)
+To enable report delivery to `zellablinds@gmail.com`, configure the following under your GitHub repository **Settings > Secrets and variables > Actions**:
+- `SMTP_USERNAME`: Sender email address (e.g., your Gmail account).
+- `SMTP_PASSWORD`: A 16-character [Google App Password](https://myaccount.google.com/apppasswords) (generated in your Google Account with 2FA enabled).

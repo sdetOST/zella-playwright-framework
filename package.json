@@ -1,0 +1,37 @@
+{
+  "name": "zella-playwright-framework",
+  "version": "1.0.0",
+  "description": "World-class enterprise Playwright TypeScript UI automation framework for Zella Blinds platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:auth": "playwright test tests/auth",
+    "test:contact": "playwright test tests/contact",
+    "test:navigation": "playwright test tests/navigation",
+    "test:estimate": "playwright test tests/estimate",
+    "test:products": "playwright test tests/products",
+    "test:report": "playwright show-report",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "automation",
+    "pom",
+    "tdd",
+    "qa",
+    "zellablinds"
+  ],
+  "author": "Antigravity Quality Engineering",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^20.14.0",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.5.4"
+  }
+}
